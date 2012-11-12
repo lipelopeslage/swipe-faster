@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Swipe Faster (beta)</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=1020, initial-scale=1"/>
+		<meta name="author" content="www.lipelopeslage.com.br"/>
+		<meta name="description" content="A simple/nonplugin solution for using more than one finger to swipe, in means to enhance swipe navigation on mobile devices" />
+		<meta property="og:title" content="Swipe Faster (beta)"/>
+		<meta property="og:image" content="http://www.lipelopeslage.com.br/swipe-faster/imgs/share.jpg"/>
+		<meta property="og:url" content="http://www.lipelopeslage.com.br/swipe-faster/"/>
+		<meta property="og:description" content="A simple/nonplugin solution for using more than one finger to swipe, in means to enhance swipe navigation on mobile devices"/>
+		<meta property="og:site_name" content="Swipe Faster"/>
+		<meta property="og:type" content="website"/>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="js/lipelopeslage.swipefaster.js"></script>
+	</head>
+<body>
+	<header>
+			<h1>SwipeFaster</h1>
+			<a href="http://br.linkedin.com/in/lipelopeslage" target="_blank">About the Author</a>
+	</header>
+	<section>
+		<h1>
+			A simple/nonplugin solution for using more than one finger to swipe, in means to enhance swipe navigation on mobile devices*.<br/>
+		</h1>
+		<p class="beta">*This is a beta version, working only on iPad and iPhone. Android's webkit seems to get only one finger on swipe :(</p>
+		<br/>
+		<div id="slideshow">
+			<p class="amount"></p>
+			<ul class="items">
+				<li><h1>Item</h1><h2>1</h2></li>
+				<li><h1>Item</h1><h2>2</h2></li>
+				<li><h1>Item</h1><h2>3</h2></li>
+				<li><h1>Item</h1><h2>4</h2></li>
+				<li><h1>Item</h1><h2>5</h2></li>
+				<li><h1>Item</h1><h2>6</h2></li>
+				<li><h1>Item</h1><h2>7</h2></li>
+				<li><h1>Item</h1><h2>8</h2></li>
+				<li><h1>Item</h1><h2>9</h2></li>
+				<li><h1>Item</h1><h2>10</h2></li>
+			</ul>
+			<div class="clear"></div>
+			<ul class="pagination">
+				<li class="selected">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>			
+			</ul>
+			<div class="clear"></div>
+		</div><br/>
+		<h3>The goal here is to speed up navigation when you're looking inside a 30 items list or so. It's pure javascript, you can use with jQuery, Mootools, etc.</h3>
+		<aside>
+			<p>var mySwipe = new SwipeFaster(getElementById("slideshow"), handler); <bdi>// calls the mathod passing a DOM Element (in this case, the slideshow element) and the handler for the swipe event</bdi></p>
+			<p>swipe.init() <bdi>// add events to the DOM Element, calling the handler every time you swipe</bdi></p>
+			<p>swipe.kill() <bdi>// clear variables and remove all events listeners</bdi></p>
+		</aside>
+		<p class="ps">NOTE: The handler will only show you how many fingers you used, ex: -2, 3. Is up to your logic and need to find the better use for it. Nevertheless, this is kind a practical example, right? ;)</p>
+		</aside>
+		<footer>Please let me know what you think, send me a email on <a href="mailto:contato@lipelopeslage.com.br">contato@lipelopeslage.com.br</a> or <a href="https://github.com/lipelopeslage/swipefaster" target="_blank"> fork this on github</a><br/>Let's push this to the next level together!</footer>
+	</section>
+
+	<script>
+		// using jquery just for a quick, plausable example
+		$(function(){
+
+			var slideshow = $("#slideshow"), items = slideshow.children("ul.items"), itemW = items.children("li").width(),
+				pagination = slideshow.children("ul.pagination"), pagItems = pagination.children("li"), totalItems, currPage, 
+				amountText = $(".amount"), timeout, SWIPE;
+			
+			currPage = 0;
+			totalItems = items.children("li").length - 1; //starts with 0;
+			pagItems.bind("click", clickPag); // bind pagination items
+
+
+			// just a simple animate function, based on the position of the clicked page
+			function clickPag(){
+				var item = $(this), index = item.index(), target = (itemW * index) *-1;
+				currPage = index;
+				pagItems.removeClass();
+				pagination.children("li:eq("+index+")").removeClass().addClass("selected");
+				items.stop().animate({"left":target}, 500);
+			}
+
+			function showAmount(amount){
+				clearTimeout(timeout);
+				amountText.empty().append("< "+Math.abs(amount)+" finger(s) detected >").fadeIn(200);
+				timeout = setTimeout(hideAmount, 2000);
+			}
+
+			function hideAmount(){
+				amountText.fadeOut(200);
+			}
+
+
+
+			/*********************************
+				S W I P E
+
+				Here is the important part
+			*********************************/
+			function handler(res){
+				var newPage = currPage + res; // res is the amount of fingers used, and add/subtract to your current page number
+												 // is very important to know that it may return +N or -N, than you can see how
+												 // simple it acctually is
+				showAmount(res); // just for example reasons
+				if(newPage < 0){
+					newPage = 0;
+				}else if(newPage >= totalItems){
+					newPage = totalItems;
+				}
+				currPage = newPage;
+				pagination.children("li:eq("+currPage+")").trigger("click");  // with the new page set, get that list item with same index
+			}
+			
+			SWIPE = new SwipeFaster(document.getElementById("slideshow"), handler);
+			SWIPE.init();
+			//swipe.kill();  // you can remove the listeners inside the instance by calling the 'kill' method.
+
+			/*********************************
+				
+			*********************************/		
+		})
+	</script>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-36282750-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+</script>
+</body>	
+</html>
