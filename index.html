@@ -3,28 +3,33 @@
 	<head>
 		<title>Swipe Faster (beta)</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=1020, initial-scale=1"/>
+		<meta name="viewport" content="width=1020"/>
 		<meta name="author" content="www.lipelopeslage.com.br"/>
-		<meta name="description" content="A simple/nonplugin solution for using more than one finger to swipe, in means to enhance swipe navigation on mobile devices" />
+		<meta name="description" content="A simple/nonplugin solution for using more than one finger to swipe and speed up navigation on mobile devices" />
 		<meta property="og:title" content="Swipe Faster (beta)"/>
 		<meta property="og:image" content="http://www.lipelopeslage.com.br/swipe-faster/imgs/share.jpg"/>
 		<meta property="og:url" content="http://www.lipelopeslage.com.br/swipe-faster/"/>
-		<meta property="og:description" content="A simple/nonplugin solution for using more than one finger to swipe, in means to enhance swipe navigation on mobile devices"/>
+		<meta property="og:description" content="A simple/nonplugin solution for using more than one finger to swipe and speed up navigation on mobile devices"/>
 		<meta property="og:site_name" content="Swipe Faster"/>
 		<meta property="og:type" content="website"/>
 
 		<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+		<![endif]-->
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script type="text/javascript" src="js/lipelopeslage.swipefaster.js"></script>
 	</head>
 <body>
+	<a href="https://github.com/lipelopeslage/swipe-faster"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 20;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 	<header>
+			<div class="fb-like" data-href="http://www.lipelopeslage.com.br/swipe-faster/" data-send="false" data-width="450" data-show-faces="false" style="position: absolute; top: 15px;"></div>
 			<h1>SwipeFaster</h1>
 			<a href="http://br.linkedin.com/in/lipelopeslage" target="_blank">About the Author</a>
 	</header>
 	<section>
 		<h1>
-			A simple/nonplugin solution for using more than one finger to swipe, in means to enhance swipe navigation on mobile devices*.<br/>
+			A simple/nonplugin solution for using more than one finger to swipe and speed up navigation on mobile devices*.
 		</h1>
 		<p class="beta">*This is a beta version, working only on iPad and iPhone. Android's webkit seems to get only one finger on swipe :(</p>
 		<br/>
@@ -57,15 +62,16 @@
 			</ul>
 			<div class="clear"></div>
 		</div><br/>
-		<h3>The goal here is to speed up navigation when you're looking inside a 30 items list or so. It's pure javascript, you can use with jQuery, Mootools, etc.</h3>
+		<h3>The goal here is to enhance navigation when you're looking inside a 30 items list or so. It's pure javascript, you can use with jQuery, Mootools, etc.</h3>
+		<a href="https://github.com/lipelopeslage/swipe-faster/blob/master/js/lipelopeslage.swipefaster.js" target="_blank" class="download" alt="Click and download the javascript file"><img src="imgs/download_btn.png" border="0"/></a>
 		<aside>
-			<p>var mySwipe = new SwipeFaster(getElementById("slideshow"), handler); <bdi>// calls the mathod passing a DOM Element (in this case, the slideshow element) and the handler for the swipe event</bdi></p>
+			<p>var mySwipe = new SwipeFaster(document.getElementById("slideshow"), handler); <bdi>// calls the mathod passing a DOM Element (in this case, the slideshow element) and the handler for the swipe event</bdi></p>
 			<p>swipe.init() <bdi>// add events to the DOM Element, calling the handler every time you swipe</bdi></p>
 			<p>swipe.kill() <bdi>// clear variables and remove all events listeners</bdi></p>
 		</aside>
 		<p class="ps">NOTE: The handler will only show you how many fingers you used, ex: -2, 3. Is up to your logic and need to find the better use for it. Nevertheless, this is kind a practical example, right? ;)</p>
 		</aside>
-		<footer>Please let me know what you think, send me a email on <a href="mailto:contato@lipelopeslage.com.br">contato@lipelopeslage.com.br</a> or <a href="https://github.com/lipelopeslage/swipefaster" target="_blank"> fork this on github</a><br/>Let's push this to the next level together!</footer>
+		<footer>Please let me know what you think, send me a email on <a href="mailto:contato@lipelopeslage.com.br">contato@lipelopeslage.com.br</a> or <a href="https://github.com/lipelopeslage/swipe-faster" target="_blank"> fork this on github</a><br/>Let's push this to the next level together!</footer>
 	</section>
 
 	<script>
@@ -79,7 +85,6 @@
 			currPage = 0;
 			totalItems = items.children("li").length - 1; //starts with 0;
 			pagItems.bind("click", clickPag); // bind pagination items
-
 
 			// just a simple animate function, based on the position of the clicked page
 			function clickPag(){
@@ -130,18 +135,6 @@
 			*********************************/		
 		})
 	</script>
-	<script type="text/javascript">
 
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-36282750-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-</script>
 </body>	
 </html>

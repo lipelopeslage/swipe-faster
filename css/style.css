@@ -31,6 +31,27 @@ html, body{
 			float:right; font-family: Georgia; font-weight: bold; font-style: italic; text-decoration: none; color: #bcbcbc; font-size: 11px; 
 		}
 
+		/* Desktops and laptops ----------- */
+		@media only screen and (max-width : 1024px) {
+			header>a{
+				margin-right: 100px;
+			}
+		}
+		
+		/* iPads (landscape) ----------- */
+		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+			header>a{
+				margin-right: 100px;
+			}
+		}
+
+		/* iPads (portrait) ----------- */
+		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+			header>a{
+				margin-right: 100px;
+			}
+		}
+
 			header>a:hover{
 				text-decoration: underline;
 			}
@@ -115,9 +136,16 @@ html, body{
 					background-color: #c5cb1f;
 				}
 
+	section>a.download{
+		display:block; position: relative; width: 213px; margin: 30px auto 0 auto;
+	}
+
+		section>a.download:hover{
+			opacity: .8;
+		}
 
 	section>aside{
-		position: relative; width: 900px; margin: 40px auto; background-color: #f0f0f0; padding: 20px; border: 1px solid #CCC;
+		position: relative; width: 900px; margin: 30px auto; background-color: #f0f0f0; padding: 20px; border: 1px solid #CCC;
 	}
 
 		section>aside>p{

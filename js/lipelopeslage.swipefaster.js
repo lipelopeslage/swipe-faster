@@ -20,14 +20,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-;(function(root, undefined){
-	var touchValue = {begin: 0, end: 0, fingers: 0};
+; (function(root, undefined) {
+	var touchValue = {begin: 0, end: 0, fingers: 0}, DOMElement, handler;
 
-	root.SwipeFaster = function(){
-		
+	root.SwipeFaster = function () {
 		DOMElement = arguments[0];
 		handler = arguments[1];
-
 	}
 
 	root.SwipeFaster.prototype.init = function () {
@@ -37,12 +35,12 @@ THE SOFTWARE.
 		DOMElement.addEventListener('touchmove', touchMoveHandler, false);
 		DOMElement.addEventListener('touchend', touchEndHandler, false);
 
-		function touchStartHandler(e){
+		function touchStartHandler (e) {
 			var touch = e.targetTouches;
 			touchValue = {begin:touch[0].pageX, fingers:touch.length};
 		}
 		
-		function touchMoveHandler(e){
+		function touchMoveHandler (e) {
 			var touch = e.targetTouches;			
 			touchValue.end = touch[0].pageX;
 			touchValue.fingers = touch.length;
@@ -50,7 +48,7 @@ THE SOFTWARE.
 			return false;
 		}
 		
-		function touchEndHandler(e){
+		function touchEndHandler (e) {
 			if(!touchValue.end) return;
 			var target = touchValue.begin - touchValue.end, amount = touchValue.fingers;
 			touchValue = null;
