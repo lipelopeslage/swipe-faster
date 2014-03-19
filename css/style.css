@@ -1,0 +1,189 @@
+html, body{
+	width: 100%; margin: 0; border: 0;
+}	
+
+	body{
+		background-image: linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 41%, rgb(255,255,255) 80%);
+		background-image: -o-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 41%, rgb(255,255,255) 80%);
+		background-image: -moz-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 41%, rgb(255,255,255) 80%);
+		background-image: -webkit-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 41%, rgb(255,255,255) 80%);
+		background-image: -ms-linear-gradient(bottom, rgb(235,235,235) 0%, rgb(255,255,255) 41%, rgb(255,255,255) 80%);
+
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0, rgb(235,235,235)),
+			color-stop(0.41, rgb(255,255,255)),
+			color-stop(0.8, rgb(255,255,255))
+		);
+	}
+
+	header{
+		position: relative; width: 1000px; height: 300px; margin: 0 auto; background: url(../imgs/bg.jpg) no-repeat center top;
+	}
+
+		header>h1{
+			color: transparent; height: 0;
+		}
+
+		header>a{
+			float:right; font-family: Georgia; font-weight: bold; font-style: italic; text-decoration: none; color: #bcbcbc; font-size: 11px; 
+		}
+
+		/* Desktops and laptops ----------- */
+		@media only screen and (max-width : 1024px) {
+			header>a{
+				margin-right: 100px;
+			}
+		}
+		
+		/* iPads (landscape) ----------- */
+		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+			header>a{
+				margin-right: 100px;
+			}
+		}
+
+		/* iPads (portrait) ----------- */
+		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+			header>a{
+				margin-right: 100px;
+			}
+		}
+
+			header>a:hover{
+				text-decoration: underline;
+			}
+
+
+	section{
+		position: relative; width: 100%; margin-top: 20px;
+	}
+
+		section>*{
+			font-family: Georgia;
+		}
+
+		section>h1, section>h3, section>h4{
+			position: relative; margin: 0 auto; text-align: center; color: #1ebbd2;
+			font-style: italic; font-size: 20px; line-height: 23px;
+		}
+
+			section>h1{
+				width: 485px; 
+			}
+
+				section>h1>bdi{
+					position: relative; margin-top: 10px; font-size: 15px; line-height: 9px !important; font-weight: normal;
+				}
+
+			section>h3{
+				width: 1000px; font-size: 30px; line-height: 36px;
+			}
+
+	section>p.beta{
+		position: relative; width: 1000px; margin: 20px auto; color: #bcbcbc; text-align: center;
+	}
+
+
+	div#slideshow{
+		position: relative; overflow: hidden; width: 1000px; height: 400px; margin: 0px auto 10px auto; background: #dde32c;
+	}
+
+		div#slideshow>p.amount{
+			position: absolute; width: 100%; text-align: center; color: #FF0000;
+		}
+
+		div#slideshow>ul{
+			position: relative; width: 10000px;
+		}
+
+			div#slideshow>ul>li{
+				position: relative; float:left; height: inherit; text-align: center;
+			}
+
+		div#slideshow>ul.items{
+			height: 360px;
+		}
+
+			div#slideshow>ul.items>li{
+				width: 1000px;
+			}	
+
+				div#slideshow>ul.items>li>h1{
+					position: relative; font-size: 80px; color: transparent; top: -50px; font-style: italic;
+				}
+
+				div#slideshow>ul.items>li>h2{
+					position: relative; color: #1ebbd2; font-size: 300px; top: -400px; font-family: Arial;
+				}
+
+		div#slideshow>ul.pagination{
+			height: 40px;
+		}
+
+			div#slideshow>ul.pagination>li{
+				position: relative; float: left; width: 99px; height: inherit; font-family: Georgia; border-left: 1px solid #FFF;
+				height: 20px; color: #FFF; height: 40px; line-height: 40px; cursor: pointer;
+			}
+
+				div#slideshow>ul.pagination>li:first-child{
+					border-left: 0;
+				}
+
+				div#slideshow>ul.pagination>li.selected{
+					background-color: #c5cb1f;
+				}
+
+	section>a.download{
+		display:block; position: relative; width: 213px; margin: 30px auto 0 auto;
+	}
+
+		section>a.download:hover{
+			opacity: .8;
+		}
+
+	section>aside{
+		position: relative; width: 900px; margin: 30px auto; background-color: #f0f0f0; padding: 20px; border: 1px solid #CCC;
+	}
+
+		section>aside>p{
+			margin: 5px; color: #000; font-size: 14px; font-family: monospace;
+		}
+
+			section>aside>p>bdi{
+				color: #999;
+			}
+
+		section>aside>bdi{
+			position: relative;	top: 15px; color: #777; font-size: 14px;
+		}
+
+	section>p.ps{
+		position: relative; width: 900px; font-style: italic; font-size: 20px; line-height: 24px; margin: 0 auto; color: #c5cb1f; margin-bottom: 20px;
+	}
+
+	footer{
+		position: relative; width: 1000px; margin: 40px auto; text-align: center;
+		color: #999; width: 990px; font-size: 16px;
+	}
+
+		footer>a{
+			color: #1EBBD2; text-decoration: none;
+		}
+
+			footer>a:hover{
+				color: #1EBBD2; text-decoration: underline;		
+			}
+
+	
+
+ul{
+	list-style: none; margin: 0; border: 0; padding: 0;
+}
+
+.clear{
+	clear: both;
+	height:0;
+}
